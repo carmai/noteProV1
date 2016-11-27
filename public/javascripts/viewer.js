@@ -58,7 +58,7 @@ class Viewer {
     editNoteTemplate(){
         //TODO this template is for editing a new note
         console.log("create note template has been activated");
-        var createNoteFormString = "<div class='createNote' id='createNote'><form method='post' action='/add' id = 'editNoteForm' target='_blank'> <fieldset> <legend>Title</legend> <p>" +
+        var createNoteFormString = "<div class='createNote' id='createNote'><form method='post' action='/add' id = 'editNoteForm' name='editNoteForm'> <fieldset> <legend>Title</legend> <p>" +
             "<label for='title'>Title: </label> <input type='text'  required name='title' placeholder='title' id='title' ></p></fieldset><fieldset>" +
             "<legend>Content</legend><p><label for='inhalt'>Content: </label><textarea required name='inhalt' placeholder='content' id='inhalt' >" +
             "</textarea></p></fieldset><fieldset><legend>Importance</legend><p><label for='importance'>Importance: </label><select name='importance'" +
@@ -71,7 +71,21 @@ class Viewer {
 
         document.getElementById("edit").innerHTML = createNoteFormString;
 
+        /*
+        window.onload = function ()
+        {
+            document.editNoteForm.onsubmit = function () { return app.service.makeData(this.title.value, this.inhalt.value, this.importance.value, this.dueDate.value); };
+        };
+       */
+        this.submitFunction();
 
+        //app.service.doSomething();
+
+
+    }
+
+    submitFunction(){
+        document.editNoteForm.onsubmit = function () { return app.service.makeData(this.title.value, this.inhalt.value, this.importance.value, this.dueDate.value); };
     }
 
     editTemplate(i){
@@ -141,6 +155,9 @@ class Viewer {
 
 
     insertMenu(){
+
+
+
         document.getElementById("navLeft").innerHTML =
             "<button class='button' id='createNote' onclick='app.ctrl.applyEditNoteTemplate()'>Create new note</button>";
        /* document.getElementById("navRight").innerHTML =
@@ -161,7 +178,7 @@ class Viewer {
             "<input type='submit' class='button1' id='sortFinishDate' value='Sort by finished date' onclick='app.ctrl.executeSortByFinishDate()'></form>";
 
         /*save button*/
-        this.insertSaveDataButton();
+       // this.insertSaveDataButton(); // check all dependencies
 
     }
 

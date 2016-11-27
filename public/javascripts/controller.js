@@ -15,6 +15,7 @@ class Controller {
 
 
     applyTemplate(){
+       // app.service.doSomething();
         if (app.model.notes.length == 0) {
             app.view.templateZero();
         } else {
