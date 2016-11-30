@@ -65,6 +65,8 @@ class Services {
 
 }
 
+
+
     handleResponse(xhr)
 {
     if (xhr.readyState == 4  && xhr.status == 200)
@@ -73,20 +75,16 @@ class Services {
         //responseOutput.innerHTML = xhr.responseText;
 
         var response = JSON.parse(xhr.responseText);
+        app.ctrl.onCreatedNote(response);
+
+        /* //ausgelagert
         responseOutput.innerHTML ='<p><b>Server response:</b></p><p> Titel: <i>' + response.title + '</i>&nbsp' +
             'Content: <i>' + response.content + '</i>&nbsp' +
             'Importance level: <i>' + response.importance + '</i>&nbsp' +
             'Due date: <i>' + response.dueDate + '</i></p>';
-
-
-
+            */
     }
 }
-
-
-
-
-
 
      makeData(title, inhalt, importance, dueDate )
 {

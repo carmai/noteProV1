@@ -187,5 +187,14 @@ class Controller {
 
     }
 
+    submitFunction(){
+        document.editNoteForm.onsubmit = function () { return app.service.makeData(this.title.value, this.inhalt.value, this.importance.value, this.dueDate.value); };
+    }
+
+    onCreatedNote(response) {
+        // call view to render & update
+        app.view.displayOutput(response);
+    }
+
 
 }

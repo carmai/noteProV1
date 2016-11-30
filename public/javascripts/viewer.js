@@ -77,16 +77,28 @@ class Viewer {
             document.editNoteForm.onsubmit = function () { return app.service.makeData(this.title.value, this.inhalt.value, this.importance.value, this.dueDate.value); };
         };
        */
-        this.submitFunction();
+        app.ctrl.submitFunction();
 
         //app.service.doSomething();
 
 
     }
 
+    /*
+    // moved to controller
     submitFunction(){
         document.editNoteForm.onsubmit = function () { return app.service.makeData(this.title.value, this.inhalt.value, this.importance.value, this.dueDate.value); };
     }
+*/
+
+    displayOutput(response){
+
+        responseOutput.innerHTML =`<p><b>Server response:</b></p><p> Titel: <i> ${response.title} </i>&nbsp 
+            Content: <i>  ${response.content} </i>&nbsp 
+            Importance level: <i> ${response.importance}</i>&nbsp Due date: <i> ${response.dueDate} </i></p>`;
+
+    }
+
 
     editTemplate(i){
 
